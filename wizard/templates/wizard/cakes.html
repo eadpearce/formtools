@@ -1,0 +1,12 @@
+{% extends "wizard/base.html" %}
+
+{% block content %}
+<h1 class="govuk-heading-l">{% if object_list %}Here are some cakes{% else %}There are no cakes :( {% endif %}</h1>
+{{ form_data }}
+<a class="govuk-link govuk-heading-m" href="{% url 'wizard' %}">Make a cake</a>
+<ul>
+    {% for cake in object_list %}
+    <li>{{ cake.name|capfirst }} - a {{ cake.sponge_flavour }} cake with {{ cake.frosting_flavour }} {{ cake.frosting_type }} frosting</li>
+    {% endfor %}
+</ul>
+{% endblock %}
